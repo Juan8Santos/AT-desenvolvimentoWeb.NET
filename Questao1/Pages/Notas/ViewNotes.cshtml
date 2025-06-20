@@ -1,0 +1,38 @@
+﻿@page
+@model AT.Pages.Notas.ViewNotesModel
+@{}
+
+<h2>Salve seu texto em um arquivo!</h2>
+<form method="post">
+    <label asp-for="@Model.Content">Texto: </label>
+    <input asp-for="@Model.Content" class="form-control" />
+    <button type="submit" class="btn btn-primary mt-2">Salvar</button>
+</form>
+
+<br />
+
+<h2><strong>Anotações</strong></h2>
+
+@if (Model.Files != null && Model.Files.Any())
+{
+
+    <ul>
+        @foreach (var file in Model.Files)
+        {
+            <li>
+                <a asp-page="/ViewNotes/ViewNotes" asp-route-file="@file">@file</a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Nenhuma nota disponivel.</p>
+}
+
+@if (!string.IsNullOrEmpty(Model.readContent))
+{
+    <br />
+    <h2>Visualização do arquivo: @Model.nameSelected</h2>
+    <p>@Model.readContent</p>
+}

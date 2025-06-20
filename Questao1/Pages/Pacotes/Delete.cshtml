@@ -1,0 +1,46 @@
+﻿@page
+@model AT.Pages.Pacotes.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PacotesTuristicos</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PacotesTuristicos.Titulo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PacotesTuristicos.Titulo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PacotesTuristicos.DataInicio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PacotesTuristicos.DataInicio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PacotesTuristicos.CapacidadeMaxima)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PacotesTuristicos.CapacidadeMaxima)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PacotesTuristicos.PrecoDiaria)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PacotesTuristicos.PrecoDiaria)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="PacotesTuristicos.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

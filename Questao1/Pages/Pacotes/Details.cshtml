@@ -1,0 +1,43 @@
+﻿@page "{id:int}"
+@model AT.Pages.Pacotes.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>PacotesTuristicos</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PacotesTuristicos.Titulo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PacotesTuristicos.Titulo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PacotesTuristicos.DataInicio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PacotesTuristicos.DataInicio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PacotesTuristicos.CapacidadeMaxima)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PacotesTuristicos.CapacidadeMaxima)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PacotesTuristicos.PrecoDiaria)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PacotesTuristicos.PrecoDiaria)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.PacotesTuristicos.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

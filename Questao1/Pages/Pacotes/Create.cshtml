@@ -1,0 +1,49 @@
+﻿@page
+@model AT.Pages.Pacotes.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>PacotesTuristicos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PacotesTuristicos.Titulo" class="control-label"></label>
+                <input asp-for="PacotesTuristicos.Titulo" class="form-control" />
+                <span asp-validation-for="PacotesTuristicos.Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PacotesTuristicos.DataInicio" class="control-label"></label>
+                <input asp-for="PacotesTuristicos.DataInicio" class="form-control" />
+                <span asp-validation-for="PacotesTuristicos.DataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PacotesTuristicos.CapacidadeMaxima" class="control-label"></label>
+                <input asp-for="PacotesTuristicos.CapacidadeMaxima" class="form-control" />
+                <span asp-validation-for="PacotesTuristicos.CapacidadeMaxima" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PacotesTuristicos.PrecoDiaria" class="control-label"></label>
+                <input asp-for="PacotesTuristicos.PrecoDiaria" class="form-control" />
+                <span asp-validation-for="PacotesTuristicos.PrecoDiaria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
