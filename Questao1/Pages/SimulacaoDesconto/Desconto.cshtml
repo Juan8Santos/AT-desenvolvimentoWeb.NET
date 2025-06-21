@@ -20,6 +20,15 @@
                 </div>   
                 <br />
                 <p class="text-success">@Model.Mensagem</p>
+                <br />
+                <p><strong>Lista guardada na memória: </strong></p>
+                <br />
+                <ul>
+                    @foreach (var desconto in AT.Pages.Simulacao.DescontoModel.Memory)
+                    {
+                        <li>@desconto</li>
+                    }
+                </ul>
             </form>
         </div>
     </div>

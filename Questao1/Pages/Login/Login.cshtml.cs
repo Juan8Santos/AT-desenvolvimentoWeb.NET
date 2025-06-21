@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections;
 using System.Security.Claims;
 
 namespace AT.Pages.Login
@@ -15,7 +16,7 @@ namespace AT.Pages.Login
         public string Senha { get; set; }
 
         [BindProperty]
-        public string? Mensagem { get; set; }
+        public string? Mensagem { get; set; } 
 
         public void OnGet()
         {

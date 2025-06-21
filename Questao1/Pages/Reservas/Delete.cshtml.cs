@@ -49,15 +49,20 @@ namespace AT.Pages.Reservas
                 return NotFound();
             }
 
-            var reserva = await _context.Reservas.FindAsync(id);
+            var reserva = await _context.Reservas
+                .Include(r => r.PacoteTuristico)
+                .FirstOrDefaultAsync(r => r.Id == id);
+
             if (reserva != null)
             {
                 Reserva = reserva;
+                Reserva.PacoteTuristico.Reservados--;
                 _context.Reservas.Remove(Reserva);
                 await _context.SaveChangesAsync();
             }
 
             return RedirectToPage("./Index");
         }
+
     }
 }

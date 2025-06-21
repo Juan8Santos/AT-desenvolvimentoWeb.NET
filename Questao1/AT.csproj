@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\LogDesconto\" />
     <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
