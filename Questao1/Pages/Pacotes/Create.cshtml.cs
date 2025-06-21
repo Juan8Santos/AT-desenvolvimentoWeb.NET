@@ -19,8 +19,15 @@ namespace AT.Pages.Pacotes
             _context = context;
         }
 
+        public List<SelectListItem> TodasCidades { get; set; } = new();
+
+
+        [BindProperty]
+        public List<int> CidadesSelecionadas { get; set; } = new();
+
         public IActionResult OnGet()
         {
+            Dados();
             return Page();
         }
 
@@ -32,13 +39,32 @@ namespace AT.Pages.Pacotes
         {
             if (!ModelState.IsValid)
             {
+                Dados();
                 return Page();
             }
+
 
             _context.PacoteTuristico.Add(PacotesTuristicos);
             await _context.SaveChangesAsync();
 
+
+            foreach (var cidade in CidadesSelecionadas)
+            {
+                var destino = new Destino
+                {
+                    PacoteTuristicoId = PacotesTuristicos.Id,
+                    CidadeDestinoId = cidade
+                };
+                _context.Destinos.Add(destino);
+            }
+            await _context.SaveChangesAsync();
+
             return RedirectToPage("./Index");
+        }
+
+        public void Dados()
+        {
+            TodasCidades = _context.CidadeDestinos.Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.Nome }).ToList();
         }
     }
 }

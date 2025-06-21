@@ -36,7 +36,7 @@ namespace AT.Pages.Cidades
                 return NotFound();
             }
             CidadeDestino = cidadedestino;
-           ViewData["PaisDestinoId"] = new SelectList(_context.PaisDestino, "Id", "Id");
+           ViewData["PaisDestinoId"] = new SelectList(_context.PaisDestino, "Id", "Nome");
             return Page();
         }
 

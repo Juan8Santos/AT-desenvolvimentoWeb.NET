@@ -14,9 +14,9 @@ namespace AT.Pages.Notas
         public string readContent { get; set; }
         public string selected { get; set; }
 
-        public void OnGet()
+        public void OnGet(string file = null)
         {
-            readNotes();
+            readNotes(file);
         }
 
         public void OnPost()
@@ -53,7 +53,11 @@ namespace AT.Pages.Notas
             {
                 return;
             }
-            string fileName = $"anotation.txt";
+
+            Random random = new Random();
+
+            int randomId = random.Next(100, 10000);
+            string fileName = $"anotation-id{randomId}.txt";
             string folder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files");
 
             if (!Directory.Exists(folder))

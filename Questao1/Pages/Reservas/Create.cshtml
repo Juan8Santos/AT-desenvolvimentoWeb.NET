@@ -12,13 +12,13 @@
 <div class="row">
     <div class="col-md-4">
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Reserva.ClienteId" class="control-label"></label>
+                <label asp-for="Reserva.ClienteId" class="control-label">Cliente</label>
                 <select asp-for="Reserva.ClienteId" class ="form-control" asp-items="ViewBag.ClienteId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Reserva.PacoteTuristicoId" class="control-label"></label>
+                <label asp-for="Reserva.PacoteTuristicoId" class="control-label">Pacote Turístico</label>
                 <select asp-for="Reserva.PacoteTuristicoId" class ="form-control" asp-items="ViewBag.PacoteTuristicoId"></select>
             </div>
             <div class="form-group">

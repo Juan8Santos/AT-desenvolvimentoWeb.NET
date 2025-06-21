@@ -20,6 +20,8 @@ namespace AT.Data
 
         public DbSet<Reserva> Reservas { get; set; }
 
+        public DbSet<Destino> Destinos { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

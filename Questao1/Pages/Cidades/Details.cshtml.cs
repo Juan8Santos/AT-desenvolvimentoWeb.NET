@@ -28,7 +28,7 @@ namespace AT.Pages.Cidades
                 return NotFound();
             }
 
-            var cidadedestino = await _context.CidadeDestinos.FirstOrDefaultAsync(m => m.Id == id);
+            var cidadedestino = await _context.CidadeDestinos.Include(p => p.PaisDestino).FirstOrDefaultAsync(m => m.Id == id);
             if (cidadedestino == null)
             {
                 return NotFound();

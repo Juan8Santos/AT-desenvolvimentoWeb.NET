@@ -23,7 +23,7 @@ namespace AT.Pages.Clientes
 
         public async Task OnGetAsync()
         {
-            Cliente = await _context.Cliente.ToListAsync();
+            Cliente = await _context.Cliente.Where(c => c.Deleted == null).ToListAsync();
         }
     }
 }

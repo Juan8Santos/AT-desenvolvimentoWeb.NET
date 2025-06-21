@@ -29,7 +29,7 @@ namespace AT.Pages.Reservas
                 return NotFound();
             }
 
-            var reserva = await _context.Reservas.FirstOrDefaultAsync(m => m.Id == id);
+            var reserva = await _context.Reservas.Include(p => p.PacoteTuristico).Include(c => c.Cliente).FirstOrDefaultAsync(m => m.Id == id);
 
             if (reserva == null)
             {

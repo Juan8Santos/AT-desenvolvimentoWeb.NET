@@ -23,7 +23,7 @@ namespace AT.Pages.Pacotes
 
         public async Task OnGetAsync()
         {
-            PacotesTuristicos = await _context.PacoteTuristico.ToListAsync();
+            PacotesTuristicos = await _context.PacoteTuristico.Include(p => p.Destinos).ThenInclude(d => d.CidadeDestino).ToListAsync();
         }
     }
 }

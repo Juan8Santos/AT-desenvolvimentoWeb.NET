@@ -1,38 +1,53 @@
-﻿@page
+﻿@page "/notas"
 @model AT.Pages.Notas.ViewNotesModel
-@{}
-
-<h2>Salve seu texto em um arquivo!</h2>
-<form method="post">
-    <label asp-for="@Model.Content">Texto: </label>
-    <input asp-for="@Model.Content" class="form-control" />
-    <button type="submit" class="btn btn-primary mt-2">Salvar</button>
-</form>
-
-<br />
-
-<h2><strong>Anotações</strong></h2>
-
-@if (Model.Files != null && Model.Files.Any())
-{
-
-    <ul>
-        @foreach (var file in Model.Files)
-        {
-            <li>
-                <a asp-page="/ViewNotes/ViewNotes" asp-route-file="@file">@file</a>
-            </li>
-        }
-    </ul>
-}
-else
-{
-    <p>Nenhuma nota disponivel.</p>
+@{
+    ViewData["Title"] = "Anotações";
 }
 
-@if (!string.IsNullOrEmpty(Model.readContent))
-{
-    <br />
-    <h2>Visualização do arquivo: @Model.nameSelected</h2>
-    <p>@Model.readContent</p>
-}
+<div class="container mt-4">
+    <h1 class="mb-4">Escreva uma anotação</h1>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form method="post">
+                <div class="form-group mb-3">
+                    <label asp-for="content" class="form-label">Texto:</label>
+                    <textarea asp-for="content" class="form-control" rows="4" placeholder="Digite sua anotação aqui..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <h2 class="mb-3">Anotações Salvas</h2>
+
+    @if (Model.files?.Any() == true)
+    {
+        <ul class="list-group mb-4">
+            @foreach (var file in Model.files)
+            {
+                <li class="list-group-item">
+                    <a asp-page="/Notas/ViewNotes" asp-route-file="@file" class="text-decoration-none">
+                        @file
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p class="text-muted">Nenhuma nota disponível.</p>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.readContent))
+    {
+        <div class="card mt-4">
+            <div class="card-header">
+                Visualização da anotação: <strong>@Model.selected</strong>
+            </div>
+            <div class="card-body">
+                <p class="card-text">@Model.readContent</p>
+            </div>
+        </div>
+    }
+</div>

@@ -36,8 +36,8 @@ namespace AT.Pages.Reservas
                 return NotFound();
             }
             Reserva = reserva;
-           ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id");
-           ViewData["PacoteTuristicoId"] = new SelectList(_context.PacoteTuristico, "Id", "Id");
+            ViewData["ClienteId"] = new SelectList(_context.Cliente.Where(c => c.Deleted == null), "Id", "Nome");
+            ViewData["PacoteTuristicoId"] = new SelectList(_context.PacoteTuristico, "Id", "Titulo");
             return Page();
         }
 

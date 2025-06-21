@@ -21,7 +21,7 @@ namespace AT.Pages.Cidades
 
         public IActionResult OnGet()
         {
-        ViewData["PaisDestinoId"] = new SelectList(_context.PaisDestino, "Id", "Id");
+            carregarDados();
             return Page();
         }
 
@@ -33,6 +33,7 @@ namespace AT.Pages.Cidades
         {
             if (!ModelState.IsValid)
             {
+                carregarDados();
                 return Page();
             }
 
@@ -40,6 +41,11 @@ namespace AT.Pages.Cidades
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
+        }
+
+        public void carregarDados()
+        {
+            ViewData["PaisDestinoId"] = new SelectList(_context.PaisDestino, "Id", "Nome");
         }
     }
 }
