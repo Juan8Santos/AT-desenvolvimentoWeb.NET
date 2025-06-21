@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AT.Data;
 using AT.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AT.Pages.Paises
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly AT.Data.EmpresaViagemContext _context;
